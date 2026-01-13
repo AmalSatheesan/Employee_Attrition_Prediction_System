@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data files (if large)
+data/*.csv
+
+# Environment
+.env
+venv/
+.env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Trained ML models
+models/*.pkl

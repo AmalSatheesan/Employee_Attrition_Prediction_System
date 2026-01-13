@@ -136,11 +136,6 @@ A Streamlit-based web application allows users to:
 - Predict attrition (Yes / No)
 - View probability scores
 
-### Run the App Locally
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-
 ## 📦 Model Artifacts (Important Note)
 
 Trained machine learning model files (`.pkl`) are intentionally **not included** in this GitHub repository due to GitHub’s file size limitations.
@@ -153,4 +148,11 @@ Trained machine learning model files (`.pkl`) are intentionally **not included**
   - Stored externally (e.g., cloud storage, MLflow, or artifact repositories) for deployment and production use.
 
 This approach aligns with **industry best practices** for managing large machine learning artifacts and separating source code from model binaries.
+
+
+
+### Run the App Locally
+```bash
+pip install -r requirements.txt
+streamlit run app.py
 

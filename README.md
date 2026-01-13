@@ -1,38 +1,142 @@
 # Employee Attrition Prediction System
 
 ## 📌 Project Overview
-This project predicts whether an employee is likely to leave an organization using machine learning techniques.
+This project is an end-to-end Machine Learning system developed to predict whether an employee is likely to leave an organization (Attrition: Yes/No) using historical HR data.
 
-## 🎯 Objective
-To help HR teams proactively identify employees at risk of attrition and take retention actions.
+The project follows an industry-aligned ML workflow covering data analysis, preprocessing, feature selection, model training, evaluation, and deployment readiness through a Streamlit application.
 
-## 📊 Dataset
-- Source: Kaggle Employee Attrition Dataset
-- Size: ~74,000 records
-- Target Variable: Attrition (Stayed / Left)
+---
 
-## 🛠 Tech Stack
-- Python
-- Pandas, NumPy
-- Scikit-learn, Imbalanced-learn
-- Streamlit
-- Joblib
+## 🎯 Project Objective
+- Predict employee attrition using supervised machine learning
+- Identify key factors influencing employee turnover
+- Assist HR teams in proactive retention planning
+- Build a reproducible and deployment-ready ML solution
 
-## 🔍 Methodology
-- Exploratory Data Analysis (EDA)
-- Feature selection using Chi-Square and Random Forest importance
-- Class imbalance handling using SMOTE
-- Model comparison (Logistic Regression vs Random Forest)
-- Hyperparameter tuning using GridSearchCV
+---
 
-## 📈 Model Performance
-- Accuracy: ~75%
-- Recall (Attrition): ~0.75
+## 📊 Dataset Information
+
+- **Dataset Name:** Employee Attrition Dataset  
+- **Source:** Kaggle  
+- **Link:**  
+  👉 https://www.kaggle.com/datasets/stealthtechnologies/employee-attrition-dataset  
+
+- **Total Records (after merge):** ~74,000  
+- **Problem Type:** Binary Classification  
+- **Target Variable:** `Attrition`  
+  - 0 → Stayed  
+  - 1 → Left  
+
+### Dataset Setup (Important)
+The Kaggle dataset is provided as two files:
+- `train.csv`
+- `test.csv`
+
+In this project:
+- Both files are **merged into a single dataset**
+- The merged dataset is then split again into train/test sets during modeling
+- This approach ensures a unified EDA and consistent preprocessing pipeline
+
+---
+
+## 🛠️ Tech Stack
+- **Language:** Python  
+- **Data Analysis:** Pandas, NumPy  
+- **Visualization:** Matplotlib, Seaborn  
+- **Machine Learning:** Scikit-learn, Imbalanced-learn  
+- **Model Persistence:** Joblib  
+- **Web Application:** Streamlit  
+- **Version Control:** Git & GitHub  
+
+---
+
+## 🔍 Project Workflow (As Implemented in Notebook)
+
+### 1️⃣ Data Loading & Initial Inspection
+- Load and merge `train.csv` and `test.csv`
+- Check shape, data types, missing values
+- Analyze class distribution of Attrition
+
+---
+
+### 2️⃣ Exploratory Data Analysis (EDA)
+- Attrition distribution analysis
+- Attrition vs:
+  - Age
+  - Monthly Income
+  - Job Role
+  - Years at Company
+  - Job Satisfaction
+- Distribution plots for numerical features
+- Outlier detection using boxplots
+- Correlation analysis
+
+Key insights were documented directly in markdown cells.
+
+---
+
+### 3️⃣ Data Preprocessing
+- Standardization of column names
+- Encoding of categorical variables
+  - Binary encoding
+  - One-hot encoding
+- Outlier handling using IQR-based capping
+- Feature scaling using `StandardScaler`
+
+---
+
+### 4️⃣ Feature Selection
+- Chi-Square test for categorical feature relevance
+- Correlation-based feature elimination
+- Random Forest feature importance analysis
+- Removal of identifier leakage (`Employee ID`)
+
+Only meaningful and business-relevant predictors were retained.
+
+---
+
+### 5️⃣ Class Imbalance Handling
+- Baseline modeling without resampling
+- SMOTE applied **only on training data**
+- Performance comparison before and after resampling
+
+Recall for attrition cases was prioritized due to business impact.
+
+---
+
+### 6️⃣ Model Building & Evaluation
+Models trained and compared:
+- Logistic Regression
+- Random Forest
+- Random Forest + SMOTE
+- Tuned Random Forest (GridSearchCV)
+
+Evaluation metrics:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+
+---
+
+## 📈 Model Performance Summary
+- **Accuracy:** ~75%
+- **Recall (Attrition):** ~0.75
+
+> Multiple models converged to similar performance, indicating a realistic upper bound given the available features.  
+> Recall was prioritized as missing potential employee exits is more costly than false positives.
+
+---
 
 ## 🚀 Streamlit Application
-The app allows users to input employee details and predicts attrition probability.
+A Streamlit-based web application allows users to:
+- Input employee details
+- Predict attrition (Yes / No)
+- View probability scores
 
-## ▶️ How to Run
+### Run the App Locally
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
